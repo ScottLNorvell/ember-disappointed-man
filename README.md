@@ -1,7 +1,6 @@
-# Ember-disappointed-man
+# Ember Disappointed Man
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Everything amazing about your favorite website, now BUILT IN EMBER.
 
 ## Prerequisites
 
