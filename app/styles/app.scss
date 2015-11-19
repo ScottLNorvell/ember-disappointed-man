@@ -1,0 +1,30 @@
+%disappointed-man {
+  width: 200px;
+  height: 261.5px;
+  background-image: url('/images/the-disappointed-man.jpg');
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+$disappointment-levels: 0, 1, 2, 3, 4, 5, 6, 7;
+
+@function disappointment-position($level) {
+  $width: 200;
+  $height: 261.5;
+  $xpos: 0;
+  @if $level > 3 {
+    $xpos: -$width;
+  }
+  $modifier: $level % 4;
+  $ypos: -($modifier * $height);
+
+  @return #{$xpos}px #{$ypos}px;
+}
+
+@each $level in $disappointment-levels {
+  .disappointed-man--level-#{$level} {
+    @extend %disappointed-man;
+    background-position: disappointment-position($level);
+
+  }
+}
