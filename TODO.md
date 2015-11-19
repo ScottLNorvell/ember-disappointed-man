@@ -1,12 +1,13 @@
 TODO:
 
-- [ ] the-disappointed-man (component) 
-    - [ ] listens to disappointment level
-    - [ ] bind to class `'.disappointment-level--{{level}}'`
+- [x] the-disappointed-man (component) 
+    - [x] listens to disappointment level
+    - [x] bind to class `'.disappointment-level--{{level}}'`
 - [ ] game (service, handle game details)
     - [ ] guess ()
+- [x] word-list (util)
 - [ ] word (service)
-    - [ ] sets secret word (get from api? hard list?)
+    - [x] sets secret word (get from api? hard list?)
     - [ ] displays letters and blanks
 - [ ] keyboard (component, take in letters, spit out letter buttons)
     - [ ] perhaps it controls the order?
