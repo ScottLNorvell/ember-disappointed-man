@@ -1,4 +1,10 @@
+import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
+
+const {
+  isPresent,
+  isArray
+} = Ember;
 
 moduleFor('service:word', 'Unit | Service | word', {
   // Specify the other units that are required for this test.
@@ -13,10 +19,19 @@ test('it exists', function(assert) {
 
 test('it can #setSecretWord', function(assert) {
   let wordList = ['a', 'b', 'c'];
-  let service = this.subject({
-    wordList
-  });
+  let service = this.subject({ wordList });
+
   assert.equal(service.get('secretWord'), '', 'precond - secret word absent');
   service.setSecretWord();
   assert.ok(wordList.indexOf(service.get('secretWord')) !== -1, 'secret words set!');
+});
+
+test('display word shows blanks instead of letters when nothing is guessed', function(assert) {
+  let secretWord = 'bunnies';
+  let service = this.subject({ secretWord });
+
+  let displayWord = service.get('displayWord');
+  assert.ok(isPresent(displayWord), 'displayWord exists!');
+  assert.ok(isArray(displayWord), 'displayWord is an array!');
+  assert.ok(displayWord.indexOf(secretWord[0]) !== -1, "displayWord contains 'b'!");
 });
