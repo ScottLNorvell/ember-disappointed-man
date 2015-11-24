@@ -8,5 +8,11 @@ const {
 
 export default Component.extend({
   word: inject.service(),
-  secretWord: computed.reads('word.secretWord')
+  game: inject.service(),
+  secretWord: computed.reads('word.secretWord'),
+  actions: {
+    playAgain() {
+      this.get('game').playAgain();
+    }
+  }
 });

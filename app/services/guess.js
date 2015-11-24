@@ -36,5 +36,6 @@ export default Service.extend({
   reset() {
     this.get('guessed').clear();
     this.get('badGuesses').clear();
+    this.get('goodGuesses').clear();
   }
 });
