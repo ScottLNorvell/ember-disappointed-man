@@ -9,16 +9,26 @@ const {
 
 export default Service.extend({
   wordList,
-  secretWord: 'javascript is great',
+  secretWord: '',
   displayWord: computed('secretWord', function() {
     let { secretWord } = this;
     let letterArray = secretWord.split('');
     let displayWord = Ember.A();
     for (let i = 0, len = letterArray.length; i < len; i++) {
       let letter = letterArray[i];
-      displayWord.pushObject(Ember.Object.create({letter, show: isSpace(letter)}))
+      displayWord.pushObject(Ember.Object.create({letter, show: isSpace(letter)}));
     }
     return displayWord;
+  }),
+  uniqLetters: computed('secretWord', function() {
+    let letters = this.get('secretWord')
+      .replace(/\s/g,'')
+      .split('')
+    return Ember.A(letters).uniq()
+  }),
+  letterCount: computed.alias('uniqLetters.length'),
+  letterSet: computed('uniqLetters', function() {
+    return new Set(this.get('uniqLetters'));
   }),
   setSecretWord() {
     let { wordList } = this;
@@ -29,7 +39,7 @@ export default Service.extend({
     let displayWord = this.get('displayWord');
     for (let i = 0, len = displayWord.length; i < len; i++) {
       let letter = displayWord[i];
-      let show = isSpace(letter.letter) || guessed.has(letter.letter)
+      let show = isSpace(letter.letter) || guessed.has(letter.letter);
       letter.set('show', show);
     }
   }

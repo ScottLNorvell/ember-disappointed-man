@@ -7,6 +7,6 @@ const {
 
 export default Component.extend({
   keyboardKeys: computed(function() {
-    return Ember.A('abcdefghijklmnopqrstuvwxyz'.split(''))
+    return Ember.A('abcdefghijklmnopqrstuvwxyz'.split(''));
   })
 });

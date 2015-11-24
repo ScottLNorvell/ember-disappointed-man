@@ -3,21 +3,24 @@ import Ember from 'ember';
 const {
   Component,
   computed,
-  inject
+  inject,
+  isPresent
 } = Ember;
 
 export default Component.extend({
   classNames: ['dm-keyboard-key'],
   classNameBindings: ['guessed'],
   attributeBindings: ['disabled'],
-  disabled: computed.alias('guessed'),
+  disabled: computed('guessed', 'guess.gameOver', function() {
+    return isPresent(this.get('guessed')) || this.get('guess.gameOver');
+  }),
   tagName: 'button',
   guess: inject.service(),
-  guessed: false,
+  guessed: '',
   click() {
     if (this.get('guessed')) { return; }
-
-    this.set('guessed', true);
-    this.get('guess').guess(this.get('letter'));
+    let goodGuess = this.get('guess').guess(this.get('letter'));
+    let guessed = goodGuess ? 'correct' : 'incorrect';
+    this.set('guessed', guessed);
   }
 });

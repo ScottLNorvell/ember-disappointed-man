@@ -8,25 +8,33 @@ const {
 
 export default Service.extend({
   word: inject.service(),
+  letterCount: computed.reads('word.letterCount'),
+  displayWord: computed.reads('word.displayWord'),
   guessed: computed(function() {
     return new Set();
   }),
-  goodLetters: computed('word.displayWord', function() {
-    let displayWord = this.get('word.displayWord');
-    return new Set(displayWord.mapBy('letter'));
+  goodLetters: computed.reads('word.letterSet'),
+  success: computed('goodGuesses.length', 'letterCount', function() {
+    return this.get('goodGuesses.length') >= this.get('letterCount');
   }),
-  badLetters: Ember.A(),
+  badGuesses: Ember.A(),
+  goodGuesses: Ember.A(),
+  gameOver: computed.equal('badGuesses.length', 7),
   guess(letter) {
     let guessed = this.get('guessed');
     let goodLetters = this.get('goodLetters');
+    let goodGuess = goodLetters.has(letter);
     guessed.add(letter);
-    if (!goodLetters.has(letter)) {
-      this.get('badLetters').pushObject(letter);
+    if (goodGuess) {
+      this.get('goodGuesses').pushObject(letter);
+    } else {
+      this.get('badGuesses').pushObject(letter);
     }
     this.get('word').checkLetters(guessed);
+    return goodGuess;
   },
   reset() {
     this.get('guessed').clear();
-    this.get('badLetters').clear();
+    this.get('badGuesses').clear();
   }
 });

@@ -30,8 +30,11 @@ $disappointment-levels: 0, 1, 2, 3, 4, 5, 6, 7;
 }
 
 .dm-keyboard-key {
-  color: green;
-  &.guessed {
+  color: black;
+  &.correct {
+    color: green;
+  }
+  &.incorrect {
     color: red;
   }
 }
