@@ -3,20 +3,22 @@ TODO:
 - [x] the-disappointed-man (component) 
     - [x] listens to disappointment level
     - [x] bind to class `'.disappointment-level--{{level}}'`
-- [ ] game (service, handle game details)
-    - [ ] guess ()
+- [x] game (service, handle game details)
+  - [x] playAgain (resets everything...)
+- [x] guess service
+    - [x] guess ()
 - [x] word-list (util)
 - [ ] letter-in-play (component letter=letter use animations with liquid if as to whether to display [letter || _])
-- [ ] word (service)
+- [x] word (service)
     - [x] sets secret word (get from api? hard list?)
-    - [ ] displays letters and blanks
-- [ ] keyboard (component, take in letters, spit out letter buttons)
+    - [x] displays letters and blanks
+- [x] keyboard (component, take in letters, spit out letter buttons)
     - [ ] perhaps it controls the order?
-    - [ ] alphabetical
+    - [x] alphabetical
     - [ ] qwerty?
     - [ ] dvorak?
 - [x] letter-button (component, action "guess letter")
-- [ ] guessed (component, display "wrong letters")
-    - [ ] could also just keep track of state in keyboard (save space)
+- [x] guessed (component, display "wrong letters")
+    - [x] could also just keep track of state in keyboard (save space)
 
 
