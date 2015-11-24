@@ -16,9 +16,10 @@ export default Component.extend({
   }),
   tagName: 'button',
   guess: inject.service(),
-  guessed: '',
+  letter: computed.alias('key.key'),
+  guessed: computed.alias('key.guessed'),
   click() {
-    if (this.get('guessed')) { return; }
+    if (isPresent(this.get('guessed'))) { return; }
     let goodGuess = this.get('guess').guess(this.get('letter'));
     let guessed = goodGuess ? 'correct' : 'incorrect';
     this.set('guessed', guessed);
