@@ -11,7 +11,6 @@ export default Component.extend({
   classNames: ['letter-in-play'],
   guess: inject.service(),
   guessed: computed.reads('guess.guessed'),
-  // tagName: 'span',
   displayLetter: computed('letter.letter', function() {
     if (this.get('isSpace')) {
       return '&nbsp;';

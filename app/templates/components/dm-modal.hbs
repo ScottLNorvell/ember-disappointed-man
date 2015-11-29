@@ -1,5 +1,9 @@
-<h2>{{title}}</h2>
-<p>The word was: <span>{{secretWord}}</span></p>
+<h2 class="dm-modal--title">{{title}}</h2>
+<h6 class="dm-modal--subtitle">The word was:</h6>
+
 {{the-disappointed-man}}
-<div {{action 'playAgain'}}>Play Again?</div>
+
+<div class="dm-modal--word-was">{{secretWord}}</div>
+
+<div class="dm-modal--play-again" {{action 'playAgain'}}>Play Again?</div>
 

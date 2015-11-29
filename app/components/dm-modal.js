@@ -7,6 +7,7 @@ const {
 } = Ember;
 
 export default Component.extend({
+  classNames: ['dm-modal'],
   word: inject.service(),
   game: inject.service(),
   secretWord: computed.reads('word.secretWord'),

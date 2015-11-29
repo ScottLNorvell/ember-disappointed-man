@@ -1,9 +1,10 @@
-$green: #4cdb4c;
-$red: #ff6666;
+$green: #5cb85c;
+$red: #d9534f;
 
 %disappointed-man {
   width: 200px;
   height: 261.5px;
+  margin: 0 auto;
   background-image: url('/images/the-disappointed-man.jpg');
   background-repeat: no-repeat;
   overflow: hidden;
@@ -38,24 +39,38 @@ body {
   font-family: Helvetica, Arial, sans-serif;
 }
 
-.dm-keyboard-key {
-  display: inline-block;
-  padding: 10px 15px;
+.dm-word-in-play {
+  margin: 0 auto;
+  padding-bottom: 15px;
+}
+
+.dm-keyboard {
+  width: 271px;
+  margin: 0 auto;
+}
+
+%dm-button {
+  padding: 8px 12px;
+  margin-bottom: 5px;
   background-color: grey;
   border-bottom: 5px solid darken(grey, 10);
   color: white;
-  font-size: 24px;
+  font-size: 18px;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+.dm-keyboard-key {
+  @extend %dm-button;
+  font-family: "Lucida Console", Monaco, monospace;
+  display: inline-block;
   &.correct {
     background-color: $green;
     border-bottom: 5px solid darken($green, 10);
-    color: darken($green, 20);
   }
   &.incorrect {
     background-color: $red;
     border-bottom: 5px solid darken($red, 10);
-    color: darken($red, 20);
   }
 }
 
@@ -63,4 +78,38 @@ body {
   display: inline-block;
   font-size: 24px;
   font-family: "Lucida Console", Monaco, monospace;
+}
+
+.dm-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  z-index: 99999;
+}
+
+.dm-title, .dm-modal--title, .dm-modal--subtitle {
+  font-family: "Lucida Console", Monaco, monospace;
+  text-align: center;
+}
+
+.dm-modal--subtitle {
+  margin-bottom: 10px;
+}
+
+.dm-modal--play-again {
+  @extend %dm-button;
+  width: 125px;
+  margin: 15px auto;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.dm-modal--word-was {
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-family: "Lucida Console", Monaco, monospace;
+  text-align: center;
 }
