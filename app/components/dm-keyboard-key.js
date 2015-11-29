@@ -14,7 +14,6 @@ export default Component.extend({
   disabled: computed('guessed', 'guess.gameOver', function() {
     return isPresent(this.get('guessed')) || this.get('guess.gameOver');
   }),
-  tagName: 'button',
   guess: inject.service(),
   letter: computed.alias('key.key'),
   guessed: computed.alias('key.guessed'),

@@ -1,3 +1,6 @@
+$green: #4cdb4c;
+$red: #ff6666;
+
 %disappointed-man {
   width: 200px;
   height: 261.5px;
@@ -29,12 +32,35 @@ $disappointment-levels: 0, 1, 2, 3, 4, 5, 6, 7;
   }
 }
 
+body {
+  background-color: black;
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
 .dm-keyboard-key {
-  color: black;
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: grey;
+  border-bottom: 5px solid darken(grey, 10);
+  color: white;
+  font-size: 24px;
+  text-transform: uppercase;
+  cursor: pointer;
   &.correct {
-    color: green;
+    background-color: $green;
+    border-bottom: 5px solid darken($green, 10);
+    color: darken($green, 20);
   }
   &.incorrect {
-    color: red;
+    background-color: $red;
+    border-bottom: 5px solid darken($red, 10);
+    color: darken($red, 20);
   }
+}
+
+.letter-in-play {
+  display: inline-block;
+  font-size: 24px;
+  font-family: "Lucida Console", Monaco, monospace;
 }
