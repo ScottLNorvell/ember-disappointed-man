@@ -8,7 +8,8 @@ TODO:
 - [x] guess service
     - [x] guess ()
 - [x] word-list (util)
-- [ ] letter-in-play (component letter=letter use animations with liquid if as to whether to display [letter || _])
+- [x] letter-in-play (component letter=letter)
+  - [x] use animations with liquid if as to whether to display [letter || _])
 - [x] word (service)
     - [x] sets secret word (get from api? hard list?)
     - [x] displays letters and blanks
