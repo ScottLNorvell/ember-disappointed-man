@@ -12,6 +12,24 @@ test('it exists', function(assert) {
 });
 
 test('playAgain resets everything!', function(assert) {
-  let service = this.subject();
-  assert.ok(service);
+  assert.expect(3);
+  let service = this.subject({
+    word: {
+      setSecretWord() {
+        assert.ok(true, 'setSecretWord called!');
+      }
+    },
+    guess: {
+      reset() {
+        assert.ok(true, 'reset called on guess!');
+      }
+    },
+    keyboard: {
+      reset() {
+        assert.ok(true, 'reset called keyboard!');
+      }
+    },
+  });
+
+  service.playAgain();
 });

@@ -6,21 +6,9 @@ moduleForComponent('dm-modal', 'Integration | Component | dm modal', {
 });
 
 test('it renders', function(assert) {
-  assert.expect(2);
-
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
   this.render(hbs`{{dm-modal}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  let matcher = /the word was/i;
 
-  // Template block usage:
-  this.render(hbs`
-    {{#dm-modal}}
-      template block text
-    {{/dm-modal}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.ok(matcher.test(this.$().text().trim()));
 });

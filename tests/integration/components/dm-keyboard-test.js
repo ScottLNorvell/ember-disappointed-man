@@ -6,21 +6,9 @@ moduleForComponent('dm-keyboard', 'Integration | Component | dm keyboard', {
 });
 
 test('it renders', function(assert) {
-  assert.expect(2);
-
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
   this.render(hbs`{{dm-keyboard}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  let keysMatcher = /[a-z]*/i;
 
-  // Template block usage:
-  this.render(hbs`
-    {{#dm-keyboard}}
-      template block text
-    {{/dm-keyboard}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.ok(keysMatcher.test(this.$().text().trim()));
 });

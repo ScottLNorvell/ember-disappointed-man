@@ -23,8 +23,8 @@ export default Service.extend({
   uniqLetters: computed('secretWord', function() {
     let letters = this.get('secretWord')
       .replace(/\s/g,'')
-      .split('')
-    return Ember.A(letters).uniq()
+      .split('');
+    return Ember.A(letters).uniq();
   }),
   letterCount: computed.alias('uniqLetters.length'),
   letterSet: computed('uniqLetters', function() {

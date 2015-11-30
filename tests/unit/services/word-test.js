@@ -33,5 +33,8 @@ test('display word shows blanks instead of letters when nothing is guessed', fun
   let displayWord = service.get('displayWord');
   assert.ok(isPresent(displayWord), 'displayWord exists!');
   assert.ok(isArray(displayWord), 'displayWord is an array!');
-  assert.ok(displayWord.indexOf(secretWord[0]) !== -1, "displayWord contains 'b'!");
+
+  let actualWord = displayWord.mapBy('letter').join('');
+
+  assert.equal(actualWord, secretWord, 'displayWord IS secret word!');
 });

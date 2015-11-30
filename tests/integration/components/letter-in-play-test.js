@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
@@ -5,22 +6,39 @@ moduleForComponent('letter-in-play', 'Integration | Component | letter in play',
   integration: true
 });
 
-test('it renders', function(assert) {
-  assert.expect(2);
+test('it shows a blank when show => false', function(assert) {
+  let letter = Ember.Object.create({
+    letter: 'a',
+    show: false
+  });
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  this.set('letter', letter);
 
-  this.render(hbs`{{letter-in-play}}`);
+  this.render(hbs`{{letter-in-play letter=letter }}`);
+  assert.equal(this.$().text().trim(), '_');
+});
 
-  assert.equal(this.$().text().trim(), '');
+test('it shows a letter when show => true', function(assert) {
+  let letter = Ember.Object.create({
+    letter: 'a',
+    show: true
+  });
 
-  // Template block usage:
-  this.render(hbs`
-    {{#letter-in-play}}
-      template block text
-    {{/letter-in-play}}
-  `);
+  this.set('letter', letter);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  this.render(hbs`{{letter-in-play letter=letter }}`);
+  assert.equal(this.$().text().trim(), 'a');
+});
+
+test('it shows a non-breaking space when letter is space...', function(assert) {
+  let letter = Ember.Object.create({
+    letter: ' ',
+    show: true
+  });
+
+  this.set('letter', letter);
+
+  this.render(hbs`{{letter-in-play letter=letter }}`);
+  let matcher = /&nbsp;/;
+  assert.ok(matcher.test(this.$().html()));
 });
